@@ -10,7 +10,7 @@
 >
 > 本文约2,680词，可能需要20分钟时间阅读。
 >
-> 本文所用到的[示例DEMO]()。
+> 本文所用到的[示例DEMO](https://github.com/darkThanBlack/LearnObjcIO/tree/master/issue1-%E6%9B%B4%E8%BD%BB%E9%87%8F%E7%9A%84ViewControllers/issue1-1)。
 
 
 
@@ -183,7 +183,7 @@ self.photosArrayDataSource = [[ArrayDataSource alloc] initWithItems:photos
 self.tableView.dataSource = self.photosArrayDataSource;
 ```
 
-可以看出他在设计上是偏向于想要将整个`ArrayDataSource`复用的，但我觉得一般`DataSource`类如果撇去和cell相关的操作其实本身代码量并不多，由于我们是先对ViewController瘦身，可以先把整个Protocols拆到`DataSource`类里，如果这样还是庞杂那再由`Helper`来完成拆分和转交，不用再递回上层去；当然实践当中这部分就非常灵活了，博主也只是举个例子讲解一下思路，[我的DEMO代码]()放在GitHub上，写文章的时候回去看了一下自己的项目，我自己是利用这个思路来处理`CollectionView`的代理方法，同时发现如果大家想看更复杂一点的例子，可以去看一下美洽客服（不是广告！）聊天页面cell的实现，他们是在`Helper`类里面用代理再拆分，cell则利用继承来在具体的子cell内部更新数据，希望对大家有所帮助。
+可以看出他在设计上是偏向于想要将整个`ArrayDataSource`复用的，但我觉得一般`DataSource`类如果撇去和cell相关的操作其实本身代码量并不多，由于我们是先对ViewController瘦身，可以先把整个Protocols拆到`DataSource`类里，如果这样还是庞杂那再由`Helper`来完成拆分和转交，不用再递回上层去；当然实践当中这部分就非常灵活了，博主也只是举个例子讲解一下思路，[我的DEMO代码](https://github.com/darkThanBlack/LearnObjcIO/tree/master/issue1-%E6%9B%B4%E8%BD%BB%E9%87%8F%E7%9A%84ViewControllers/issue1-1)放在GitHub上，写文章的时候回去看了一下自己的项目，我自己是利用这个思路来处理`CollectionView`的代理方法，同时发现如果大家想看更复杂一点的例子，可以去看一下美洽客服（不是广告！）聊天页面cell的实现，他们是在`Helper`类里面用代理再拆分，cell则利用继承来在具体的子cell内部更新数据，希望对大家有所帮助。
 
 
 
