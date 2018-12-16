@@ -16,7 +16,7 @@
 >
 > update：
 >
-> 2018-12-17  增加[issue1-2]()链接
+> 2018-12-17  增加[issue1-2](https://github.com/darkThanBlack/LearnObjcIO/blob/master/issue1-%E6%9B%B4%E8%BD%BB%E9%87%8F%E7%9A%84ViewControllers/issue1-2/issue1-2.md)链接
 
 
 

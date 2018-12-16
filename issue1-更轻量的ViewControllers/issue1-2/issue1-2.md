@@ -16,7 +16,7 @@
 
 对于我来说更有意思的是`ChildViewContoller`：平心而论这一系列的容器API应该是比较基本的内容，但我平时项目确实极少用到`addChildViewController:`方法，绝大多数都是Tabbar和Navgation的组合，通过pop，push或是present在各个页面之间跳转。我认为万事皆有因果，而新技术的出现必然有其对应的需求场景，无论最后结果如何，花费时间精力去写新玩意的人一开始的动机肯定是为了解决某个他所遇到的实际问题。对于后来者而言，如果有条件能置身于类似的需求场景中，不失为学习的一种好方式。有一个可能的场景，就是类似今日头条首页的头部菜单：（如图）
 
-![issue1-2-image1](/Users/moonshadow/Documents/LearnObjcIO/issue1-更轻量的ViewControllers/issue1-2/issue1-2-image1.png)
+![issue1-2-image1](https://github.com/darkThanBlack/LearnObjcIO/blob/master/issue1-%E6%9B%B4%E8%BD%BB%E9%87%8F%E7%9A%84ViewControllers/issue1-2/issue1-2-image1.png)
 
 我个人觉得这个横向滑动的菜单粗看比较常见，UI实现也没什么难度，开源框架应该也不少，但如果业务需求庞大的情况下，问题恐怕不是那么好解决，常见的实现思路，也是自行实现很容易采用的方案，就是把整个菜单封装成一个View，通过回调来触发各种事件，由HomeViewController来统一管理。在这种思路下：
 
@@ -44,7 +44,7 @@
 }
 ```
 
-很明显对`tableView:cellForRowAtIndexPath:`方法来说，它不应该关注`LOStyle_2_Cell`内部具体的cell，改进一些的方法会使用Model，类似于我在[issue1-1]()中的写法：
+很明显对`tableView:cellForRowAtIndexPath:`方法来说，它不应该关注`LOStyle_2_Cell`内部具体的cell，改进一些的方法会使用Model，类似于我在[issue1-1](https://github.com/darkThanBlack/LearnObjcIO/blob/master/issue1-%E6%9B%B4%E8%BD%BB%E9%87%8F%E7%9A%84ViewControllers/issue1-1/issue1-1.md)中的写法：
 
 ```objective-c
 - (UITableViewCell *)tableView:(UITableView *)tableView
