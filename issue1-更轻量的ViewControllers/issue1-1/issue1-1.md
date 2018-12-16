@@ -11,6 +11,12 @@
 > 本文约2,680词，可能需要20分钟时间阅读。
 >
 > 本文所用到的[示例DEMO](https://github.com/darkThanBlack/LearnObjcIO/tree/master/issue1-%E6%9B%B4%E8%BD%BB%E9%87%8F%E7%9A%84ViewControllers/issue1-1)。
+>
+>
+>
+> update：
+>
+> 2018-12-17  增加[issue1-2]()链接
 
 
 
@@ -155,6 +161,13 @@
 {
     return self.dataHelper.cellDataArray.count;
 }
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    LOStyle_1_Cell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([LOStyle_1_Cell class])];
+    cell.cellInfo = self.dataHelper.cellDataArray[indexPath.row];
+    return cell;
+}
 @end
 
 @interface LOStyle_1_View()<UITableViewDelegate>
@@ -174,7 +187,7 @@
 @end
 ```
 
-注意这里`Tag_2`用了弱引用，因为`dataHelper`由`LOStyle_1_View`维护，数据更新时`dataHelper`的值自然会随之改变，`DataSource`类撒手不管了；由于只需在初始化的时候取一次值，我们遵循设计规范在`Tag_3`处给出自定义的初始化方法，对外不暴露属性。现在`dataHelper`甚至可以拿到cell实例，和cell相关的一些操作甚至都可以扔给`dataHelper`去做来进一步拆分，当然这都是后话，我们可以灵活选择使用。回到上面`Tag_1`处所说的操作，随着业务变化，极有可能出现多个不同样式的cell，我们回头看一下原作者的示例代码：
+注意这里`Tag_2`用了弱引用，因为`dataHelper`由`LOStyle_1_View`维护，数据更新时`dataHelper`的值自然会随之改变，`DataSource`类撒手不管了；由于只需在初始化的时候取一次值，我们遵循设计规范在`Tag_3`处给出自定义的初始化方法，对外不暴露属性。现在`dataHelper`甚至可以拿到cell实例，和cell相关的一些操作甚至都可以扔给`dataHelper`去做来进一步拆分，当然这都是后话，我们可以灵活选择使用。回到上面`Tag_1`处给cell赋值的操作，这里进一步的优化内容在[issue1-2]()，现在暂先不讨论；随着业务变化，极有可能出现多个不同样式的cell，我们回头看一下原作者`datasource`的初始化示例代码：
 
 ```objective-c
 self.photosArrayDataSource = [[ArrayDataSource alloc] initWithItems:photos
@@ -248,7 +261,7 @@ self.tableView.dataSource = self.photosArrayDataSource;
   }
   ```
 
-列了这么多写法，我想说的其实是`User`这个类本身，相对于这些写法之间的差异，`User`类的性质有的时候更能决定它们孰优孰劣，甚至工具类本身的影响都更大：`User+Helper.h`还有什么功能？哪些地方会用到？今后会不会因为`User+Helper.h`其他功能的改动而不得不拆分`time`属性？这个格式转换功能其他类的属性会不会用到？这是一个非常简单的例子，但前面提出的一些问题其实涉及到APP整体的一些思考，我觉得有时候多去从全局的角度考虑一下，决定`time`属性的去向或许会更加容易。
+列了这么多写法，我想说的其实是相对于这些写法之间的差异，`User`类的性质有的时候更能决定它们孰优孰劣，甚至工具类本身的影响都更大：`User+Helper.h`还有什么功能？哪些地方会用到？今后会不会因为`User+Helper.h`其他功能的改动而不得不拆分`time`属性？这个格式转换功能其他类的属性会不会用到？这是一个非常简单的例子，但前面提出的一些问题其实涉及到APP整体的一些思考，我觉得有时候多去从全局的角度考虑一下，决定`time`属性的具体写法或许会更加容易。
 
 
 
