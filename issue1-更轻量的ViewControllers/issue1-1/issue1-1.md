@@ -20,7 +20,7 @@
 
 
 
-###将DataSource作为一个单独的类分离出来
+### 将DataSource作为一个单独的类分离出来
 
 原文使用`UITableViewDataSource`做示例，并指出这种方法可以推及到像`UICollectionViewDataSource`等其他Protocols上，要理解这一点其实只要再仔细想一下Delegate的模式就可以明白——既然ViewController作为一个类可以实现委托方法，那么在ViewController过于臃肿的情况下，我们自然可以再让别的类来实现这些委托方法。
 
@@ -265,7 +265,7 @@ self.tableView.dataSource = self.photosArrayDataSource;
 
 
 
-### 将UI代码移到View层
+### 将DataSource作为一个单独的类分离出来
 
 我的个人习惯是所有的ViewController都有一个View与之对应，所有子控件都在这个View上布局，利用Xcode自带的代码片段功能实现起来会更轻松一些，在前面的示例代码中也可以看出我的这一习惯。我认为在UI层要小心的是复用的程度，清晰的模块划分有时候比复用几个小控件更重要。
 

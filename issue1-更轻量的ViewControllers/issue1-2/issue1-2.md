@@ -10,7 +10,7 @@
 
 
 
-###UITableViewController VS. UIViewController
+### UITableViewController VS. UIViewController
 
 这里原作者还是耐心地介绍了如`UIRefreshControl`等一些`UITableViewController`的特性，并引申出可以使用`ChildViewController`来控制`UITableViewController`，但我认为在实际项目中基本可以宣告`UITableViewController`的死刑：我不觉得使用类似`[self.view addSubView:self.tableView]`的方式自行实现一些小功能会额外多出多大的开销，下拉刷新也有非常成熟的[MJRefresh](https://github.com/CoderMJLee/MJRefresh)，如果这个特性本身并没有太大的优势同时又会带来诸多限制，那么选型时不被采用也是理所当然。
 
@@ -30,7 +30,7 @@
 
 
 
-###分离关注点
+### 分离关注点
 
 这一段总的来说，作者介绍了一些非常实用的将cell彻底作为V层独立出来的思路和技巧，珠玉在前，我只是尽量补充一些例子，有一个比较简便的判断方法：看`delegate`或`datasource`实现方法里面有没有直接操作实例的属性，例如
 
@@ -141,3 +141,8 @@
 
 有没有具体的应用场景？有的，IM项目的聊天页面就是很好的例子，聊天气泡cell功能相似，展示不同，数量众多，这里还是推荐可以看一下美洽客服（真不是广告！）的源码实现，思路非常的类似，他们在Model和Cell的基类中有额外做不少东西，然后把cell的方法也做成了协议，这样无论开发者要自定义cell还是Model都可以满足。
 
+
+
+### 总结
+
+这一篇主要是[issue1-1](https://github.com/darkThanBlack/LearnObjcIO/blob/master/issue1-%E6%9B%B4%E8%BD%BB%E9%87%8F%E7%9A%84ViewControllers/issue1-1/issue1-1.md)的延伸，结合tableView和cell讲了实际项目代码中的干货，开篇挖了`ChildViewController`的坑，后面我结合自己平时写代码的习惯，补充了一点例子，本人才疏学浅，遗漏谬误在所难免，欢迎大家斧正补充！
