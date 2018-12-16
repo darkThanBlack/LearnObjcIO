@@ -187,7 +187,7 @@
 @end
 ```
 
-注意这里`Tag_2`用了弱引用，因为`dataHelper`由`LOStyle_1_View`维护，数据更新时`dataHelper`的值自然会随之改变，`DataSource`类撒手不管了；由于只需在初始化的时候取一次值，我们遵循设计规范在`Tag_3`处给出自定义的初始化方法，对外不暴露属性。现在`dataHelper`甚至可以拿到cell实例，和cell相关的一些操作甚至都可以扔给`dataHelper`去做来进一步拆分，当然这都是后话，我们可以灵活选择使用。回到上面`Tag_1`处给cell赋值的操作，这里进一步的优化内容在[issue1-2]()，现在暂先不讨论；随着业务变化，极有可能出现多个不同样式的cell，我们回头看一下原作者`datasource`的初始化示例代码：
+注意这里`Tag_2`用了弱引用，因为`dataHelper`由`LOStyle_1_View`维护，数据更新时`dataHelper`的值自然会随之改变，`DataSource`类撒手不管了；由于只需在初始化的时候取一次值，我们遵循设计规范在`Tag_3`处给出自定义的初始化方法，对外不暴露属性。现在`dataHelper`甚至可以拿到cell实例，和cell相关的一些操作甚至都可以扔给`dataHelper`去做来进一步拆分，当然这都是后话，我们可以灵活选择使用。回到上面`Tag_1`处给cell赋值的操作，这里进一步的优化内容在[issue1-2](https://github.com/darkThanBlack/LearnObjcIO/blob/master/issue1-%E6%9B%B4%E8%BD%BB%E9%87%8F%E7%9A%84ViewControllers/issue1-2/issue1-2.md)，现在暂先不讨论；随着业务变化，极有可能出现多个不同样式的cell，我们回头看一下原作者`datasource`的初始化示例代码：
 
 ```objective-c
 self.photosArrayDataSource = [[ArrayDataSource alloc] initWithItems:photos
